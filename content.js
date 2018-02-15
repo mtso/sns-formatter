@@ -6,6 +6,10 @@ function reformatAll() {
 
 function reformatMail(mail) {
   const container = findContainer(mail);
+  if (!container) {
+    return;
+  }
+  
   const body = cutFooter(container.text());
   const data = JSON.parse(body);
   const content = quotedPrintable.decode(cutHeader(data.content));
